@@ -75,7 +75,7 @@ h1 {
     background-color: #eeeeee;
     border: 3px solid #eeeeee;
     overflow: hidden;
-    margin: 10px;
+    margin: 20px;
 }
 
 #profilepic img {
@@ -85,8 +85,8 @@ h1 {
 
 #profilename {
     width: 220px;
-    margin-left: 70px;
-    margin-top: -46px;
+    margin-left: 80px;
+    margin-top: -56px;
     font-size: 16pt;
     font-weight: 300;
 }

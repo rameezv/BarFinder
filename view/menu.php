@@ -5,7 +5,7 @@
 <!-- Close Button -->
 
 <!-- Profile Info -->
-<div id="profilepic"><img src="https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png" alt="Profile Pic" /></div>
+<div id="profilepic"><img src="images/user-512.png" alt="Profile Pic" /></div>
 <div id="profilename">John Doe</div>
 <div class="clear"><br /></div>
 <!-- Profile Info -->
