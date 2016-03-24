@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700|Lobster+Two:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900|Exo+2:400,900);
 
 html, body {
     height: 100%;
@@ -18,9 +18,9 @@ div {
 }
 
 h1 {
-    font-family: 'Lobster Two', cursive;
+    font-family: 'Exo 2', sans-serif;
     font-size: 40pt;
-    font-weight: 700;
+    font-weight: 900;
 }
 
 #map {
@@ -34,7 +34,7 @@ h1 {
 #header {
     background-color: #bd081c;
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 0 20px;
     height: 100px;
     z-index: 10;
 }
@@ -110,9 +110,10 @@ h1 {
     width: 30px; height: 30px;
     text-align: center;
     line-height: 30px;
-    color: #607D8B;
-    margin: 10px 10px 0 0;
+    color: #B0BEC5;
+    margin: 22px 22px 0 0;
     cursor: pointer;
+    text-shadow: none;
 }
 
 #navclose:hover {
