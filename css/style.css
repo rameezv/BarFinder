@@ -7,6 +7,7 @@ html, body {
     margin-top:-10px;
     font-family: 'Roboto', sans-serif;
     background-color:#ECEFF1;
+    min-width: 800px;
 }
 
 div {
@@ -24,6 +25,7 @@ h1 {
 #map {
     height: 600px;
     z-index: 5;
+    border-bottom: 2px solid #bd081c;
 }
 
 #header {
@@ -37,6 +39,7 @@ h1 {
 #header h1 {
     text-shadow: 0 3px 0 #2b2b2b;
     float:left;
+    cursor: default;
 }
 
 #footer {
@@ -54,30 +57,71 @@ h1 {
     -webkit-border-radius: 24px;
     border-radius: 24px;
     padding: 5px 0px 0px 10px;
+    cursor: pointer;
 }
 
 #menuIcon:hover {
     background-color: #890000;
 }
 
+#profilepic {
+    width: 46px;
+    height: 46px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    background-color: #eeeeee;
+    border: 3px solid #eeeeee;
+    overflow: hidden;
+    margin: 10px;
+}
+
+#profilepic img {
+    width: 40px;
+    height: 40px;
+}
+
+#profilename {
+    width: 220px;
+    margin-left: 70px;
+    margin-top: -46px;
+    font-size: 16pt;
+    font-weight: 300;
+}
+
 #navmenu {
-    width: 200px;
+    width: 350px;
     height: 100%;
     background-color: #263238;
     color: #ffffff;
     position:fixed;
     right: 0;
     top: 0;
-    margin-right:-200px;
-    padding: 10px;
+    margin-right:-350px;
     z-index: 15;
+    padding: 0;
+}
+
+#navclose {
+    font-size: 20pt;
+    float: right;
+    width: 30px; height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #607D8B;
+    margin: 10px 10px 0 0;
+    cursor: pointer;
+}
+
+#navclose:hover {
+    color: #ffffff;
 }
 
 #information {
     width:90%;
     background-color: #ffffff;
     padding: 20px;
-    margin:10px 5%;
+    margin:20px 5%;
+    font-size: 16pt;
 }
 
 .shadow {
@@ -95,4 +139,16 @@ h1 {
     -ms-transition: all .2s ease;
     o-transition: all .2s ease;
     transition: all .2s ease;
+}
+
+.menuitem {
+    width: 350px;
+    padding: 10px 20px;
+    font-size:14pt;
+    font-weight:300;
+    cursor:pointer;
+}
+
+.menuitem:hover {
+    background-color: #111723;
 }

@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="ng">
 <head>
+<title>BarFinder</title>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="js/functions.js"></script>
