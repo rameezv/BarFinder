@@ -1,4 +1,4 @@
-<div id="map"></div>
+<div id="map" class="shadow"></div>
 <script>
     var map;
     function initMap() {

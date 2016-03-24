@@ -2,12 +2,13 @@
 
 html, body {
     height: 100%;
+    width:100%;
     margin: 0;
     padding: 0;
     margin-top:-10px;
     font-family: 'Roboto', sans-serif;
     background-color:#ECEFF1;
-    min-width: 800px;
+    overflow-x:hidden;
 }
 
 div {
@@ -23,7 +24,9 @@ h1 {
 }
 
 #map {
-    height: 600px;
+    width: 90%;
+    margin-left:5%;
+    height: 400px;
     z-index: 5;
     border-bottom: 2px solid #bd081c;
 }
