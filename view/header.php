@@ -7,3 +7,7 @@
 <meta name="viewport" content="initial-scale=1.0">
 <meta charset="utf-8">
 </head>
+
+<div id="header" class="shadow">
+<h1>BarFinder</h1>
+</div>
