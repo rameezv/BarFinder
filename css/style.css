@@ -6,6 +6,7 @@ html, body {
     padding: 0;
     margin-top:-10px;
     font-family: 'Roboto', sans-serif;
+    background-color:#ECEFF1;
 }
 
 div {
@@ -22,19 +23,76 @@ h1 {
 
 #map {
     height: 600px;
+    z-index: 5;
 }
 
 #header {
     background-color: #bd081c;
     color: #ffffff;
     padding: 10px 20px;
+    height: 100px;
+    z-index: 10;
 }
 
 #header h1 {
     text-shadow: 0 3px 0 #2b2b2b;
+    float:left;
+}
+
+#footer {
+    width:100%;
+    text-align: center;
+    padding: 20px;
+}
+
+#menuIcon {
+    float:right;
+    margin-top:28px;
+    font-size:22pt;
+    margin-right:0;
+    width: 48px; height: 48px;
+    -webkit-border-radius: 24px;
+    border-radius: 24px;
+    padding: 5px 0px 0px 10px;
+}
+
+#menuIcon:hover {
+    background-color: #890000;
+}
+
+#navmenu {
+    width: 200px;
+    height: 100%;
+    background-color: #263238;
+    color: #ffffff;
+    position:fixed;
+    right: 0;
+    top: 0;
+    margin-right:-200px;
+    padding: 10px;
+    z-index: 15;
+}
+
+#information {
+    width:90%;
+    background-color: #ffffff;
+    padding: 20px;
+    margin:10px 5%;
 }
 
 .shadow {
-    -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
-    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}
+
+.clear {
+    clear:both;
+}
+
+.fastTrans {
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    o-transition: all .2s ease;
+    transition: all .2s ease;
 }
