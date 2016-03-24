@@ -1,13 +1,10 @@
 <?php
 
-include 'view/header.php';
+require_once 'model/UserService.php'; // Attach User Service
+require_once 'controller/UserController.php'; // Attach User Controller
+require_once 'controller/PageController.php'; // Attach Page Controller
 
-include 'view/map.php';
-
-include 'view/menu.php';
-
-include 'view/info.php';
-
-include 'view/footer.php';
+$pc = new PageController();
+$pc->displayHome();
 
 ?>
