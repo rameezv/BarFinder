@@ -28,7 +28,7 @@
 <div class="logform">
     <h2>Sign Up</h2>
     <form method="post" action="index.php">
-    <table align="center" width="30%" border="0">
+    <table align="center" width="100%" border="0">
     <tr>
     <td><input type="text" name="name" placeholder="Your Name" required /></td>
     </tr>
@@ -48,7 +48,7 @@
 <div class="logform">
     <h2>Log In</h2>
     <form method="post" action="index.php">
-    <table align="center" width="30%" border="0">
+    <table align="center" width="100%" border="0">
     <tr>
     <td><input type="text" name="email" placeholder="Your Email" required /></td>
     </tr>

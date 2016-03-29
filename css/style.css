@@ -23,6 +23,10 @@ h1 {
     font-weight: 900;
 }
 
+h2 {
+    color: #bd081c;
+}
+
 #map {
     width: 90%;
     margin-left:5%;
@@ -126,6 +130,19 @@ h1 {
     padding: 20px;
     margin:20px 5%;
     font-size: 16pt;
+}
+
+#login-form {
+    width: 70%;
+    position: relative;
+    left:50%;
+    margin-left:-25%;
+}
+
+#login-form .logform {
+    display:inline-block;
+    width: 30%;
+    margin: 20px;
 }
 
 .shadow {
