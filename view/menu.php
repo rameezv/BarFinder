@@ -1,3 +1,4 @@
+<script src="js/functions.js"></script>
 <div id="navmenu" class="fastTrans shadow">
 
 <!-- Close Button -->
@@ -8,6 +9,7 @@
 <!-- Profile Info -->
 <?php
     if($this->usrsrv->isLoggedIn()) {
+        $_SESSION['form_submitted'] = true;
         echo '<div id="profilepic"><img src="images/user-512.png" alt="Profile Pic" /></div>';
         echo '<div id="profilename">'.$this->usrsrv->getName().'</div>';
         echo '<div class="clear"><br /></div>';

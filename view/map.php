@@ -1,3 +1,5 @@
+<script src="js/functions.js"></script>
+
 <div id="map" class="shadow"></div>
 <script>
     var map;

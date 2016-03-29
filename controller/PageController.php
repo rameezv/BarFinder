@@ -17,8 +17,8 @@ class PageController {
     }
 
     public function displayHome() {
-        include 'view/header.php';
         session_start();
+        include 'view/header.php';
         if($this->usrsrv->isLoggedIn()) {
             include 'view/map.php';
         } else {
@@ -27,6 +27,12 @@ class PageController {
         include 'view/menu.php';
         include 'view/info.php';
         include 'view/footer.php';
+    }
+
+    public function logout() {
+        session_start();
+        $_SESSION = array();
+        echo '<script>parent.window.location.reload();</script>';
     }
 }
 

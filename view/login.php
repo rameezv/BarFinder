@@ -5,7 +5,8 @@
         $email = $_POST['email'];
         $upass = md5($_POST['pass']);
         if ($this->usrsrv->addNewUser($email, $name, $upass)) {
-            header("Location: index.php");
+            header('Location: index.php');
+            exit();
         } else {
             echo 'Signup Error.';
         }
@@ -15,7 +16,8 @@
         $email = $_POST['email'];
         $upass = $_POST['pass'];
         if ($this->usrsrv->checkInfo($email, $upass)) {
-            header("Location: index.php");
+            header('Location: index.php');
+            exit();
         } else {
             echo 'Error.';
         }
