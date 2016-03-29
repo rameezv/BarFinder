@@ -4,15 +4,23 @@
 <div id="navclose" onclick="toggleMenu();"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></div>
 <!-- Close Button -->
 
+
 <!-- Profile Info -->
-<div id="profilepic"><img src="images/user-512.png" alt="Profile Pic" /></div>
-<div id="profilename">John Doe</div>
-<div class="clear"><br /></div>
+<?php
+    if($this->usrsrv->isLoggedIn()) {
+        echo '<div id="profilepic"><img src="images/user-512.png" alt="Profile Pic" /></div>';
+        echo '<div id="profilename">'.$this->usrsrv->getName().'</div>';
+        echo '<div class="clear"><br /></div>';
+        echo '<div class="menuitem fastTrans">Edit Profile</div>';
+        echo '<a href="logout.php"><div class="menuitem fastTrans">Log Out</div></a>';
+    }
+?>
 <!-- Profile Info -->
 
-<!-- Menu Items -->
-<div class="menuitem fastTrans">Edit Profile</div>
+<!-- Persistent Menu Items -->
+
 <div class="menuitem fastTrans">Support</div>
-<!-- Menu Items -->
+
+<!-- Persistent Menu Items -->
 
 </div>

@@ -1,62 +1,63 @@
+<?php
 
-<div class="page-content">
+    if(isset($_POST['btn-signup'])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $upass = md5($_POST['pass']);
+        if ($this->usrsrv->addNewUser($email, $name, $upass)) {
+            header("Location: index.php");
+        } else {
+            echo 'Signup Error.';
+        }
+    }
 
-    <div class="row">
-        <div class="space-6"></div>
-        <div class="col-sm-10 col-sm-offset-1">
-            <div id="login-box" class="login-box visible widget-box no-border">
-                <div class="widget-body">
-                    <div class="widget-main">
-                        <h4 class="header blue lighter bigger">
-                            <i class="icon-coffee green"></i>
-                            Login to BarMeUp
-                        </h4>
+    if(isset($_POST['btn-login'])) {
+        $email = $_POST['email'];
+        $upass = $_POST['pass'];
+        if ($this->usrsrv->checkInfo($email, $upass)) {
+            header("Location: index.php");
+        } else {
+            echo 'Error.';
+        }
+    }
+?>
+<div id="login-form">
 
-                        <div class="space-16"></div>
+<div class="logform">
+    <h2>Sign Up</h2>
+    <form method="post" action="index.php">
+    <table align="center" width="30%" border="0">
+    <tr>
+    <td><input type="text" name="name" placeholder="Your Name" required /></td>
+    </tr>
+    <tr>
+    <td><input type="email" name="email" placeholder="Your Email" required /></td>
+    </tr>
+    <tr>
+    <td><input type="password" name="pass" placeholder="Your Password" required /></td>
+    </tr>
+    <tr>
+    <td><button type="submit" name="btn-signup">Sign Me Up</button></td>
+    </tr>
+    </table>
+    </form>
+</div>
 
-                        <form name="loginForm" class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="email"> Email / Phone </label>
-                                <div class="col-sm-7">
-                           <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Email / Phone" name="email" ng-model="login.email" required focus/>
-                                <i class="ace-icon fa fa-user"></i>
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="password"> Password </label>
-                                <div class="col-sm-7">
-                           <span class="block input-icon input-icon-right">
-                                <input type="password" class="form-control" placeholder="Password" ng-model="login.password" required/>
-                                <i class="ace-icon fa fa-lock"></i>
-                            </span>
-                                </div>
-                            </div>
-                            <div class="space"></div>
-                            <div class="clearfix">
-                                <div class="row">
-                                    <label class="col-sm-3 control-label no-padding-right"> </label>
-                                    <div class="col-sm-7">
-                                        <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="doLogin(login)" data-ng-disabled="loginForm.$invalid">
-                                            <i class="ace-icon fa fa-key"></i>
-                                            Login
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space-4"></div>
-                            <span class="lbl col-sm-3"> </span><div class="col-sm-7">Don't have an account? <a href="#/signup">Sign up Here</a></div>
-                        </form>
+<div class="logform">
+    <h2>Log In</h2>
+    <form method="post" action="index.php">
+    <table align="center" width="30%" border="0">
+    <tr>
+    <td><input type="text" name="email" placeholder="Your Email" required /></td>
+    </tr>
+    <tr>
+    <td><input type="password" name="pass" placeholder="Your Password" required /></td>
+    </tr>
+    <tr>
+    <td><button type="submit" name="btn-login">Sign In</button></td>
+    </tr>
+    </table>
+    </form>
+</div>
 
-
-
-                    </div><!-- /widget-main -->
-
-
-                </div><!-- /widget-body -->
-            </div><!-- /login-box -->
-
-        </div><!-- /position-relative -->
-    </div>
-</div><!-- /.page-content -->
+</div>
