@@ -133,16 +133,18 @@ h2 {
 }
 
 #login-form {
-    width: 70%;
-    position: relative;
-    left:50%;
-    margin-left:-25%;
+    width: 100%;
+    padding: 0 5%;
 }
 
 #login-form .logform {
     display:inline-block;
-    width: 30%;
-    margin: 20px;
+    width: 45%;
+    margin:auto auto;
+}
+
+#login-form .logform:first-child {
+    margin-right:8%;
 }
 
 .shadow {
