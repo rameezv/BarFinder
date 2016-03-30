@@ -29,12 +29,12 @@ class UserService {
             USE bmuusers;";
             // use exec() because no results are returned
             $this->conn->exec($sql);
-            $eql = "CREATE TABLE IF NOT EXISTS users(
-            'id' VARCHAR(50) NOT NULL,
-            'name' VARCHAR(50) NOT NULL,
-            'pw' VARCHAR(100) NOT NULL,
-            PRIMARY KEY('id')
-            )";
+            $eql = "CREATE TABLE IF NOT EXISTS users (
+                `id` VARCHAR(45) NOT NULL,
+                `name` VARCHAR(45) NOT NULL,
+                `pw` VARCHAR(45) NOT NULL,
+                `fbid` VARCHAR(45) NULL,
+                PRIMARY KEY (`id`));";
             $this->conn->exec($sql);
         } catch(PDOException $e) {
             throw new Exception("Database Connection Error: $e.<br />");
@@ -49,10 +49,10 @@ class UserService {
         $this->conn = NULL;
     }
 
-    public function addUser($email, $name, $password) {
+    public function addUser($email, $name, $password, $fbid) {
         try {
             $this->openDB();
-            $sql = "INSERT INTO users (id, name, pw) VALUES ('$email', '$name', '$password')";
+            $sql = "INSERT INTO users (id, name, pw, fbid) VALUES ('$email', '$name', '$password', '$fbid')";
             $this->conn->exec($sql);
             $this->closeDB();
             return true;
@@ -88,6 +88,27 @@ class UserService {
         $this->closeDB();
         $result = $stmt->fetchAll();
         return $result;
+    }
+
+    public function setFBses($fbid) {
+        $this->openDB();
+        $stmt = $this->conn->prepare("SELECT id, fbid FROM users WHERE fbid='$fbid'");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $this->closeDB();
+        $result = $stmt->fetchAll();
+        $_SESSION['user'] = $result[0]['id'];
+        return true;
+    }
+
+    public function checkFBID($fbid) {
+        $this->openDB();
+        $stmt = $this->conn->prepare("SELECT id, fbid FROM users WHERE fbid='$fbid'");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $this->closeDB();
+        $result = $stmt->fetchAll();
+        return (isset($result[0]['id']));
     }
 
 }

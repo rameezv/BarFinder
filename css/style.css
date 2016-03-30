@@ -89,8 +89,10 @@ h2 {
 
 #profilename {
     width: 220px;
-    margin-left: 80px;
-    margin-top: -56px;
+    /*margin-left: 80px;*/
+    /*margin-top: -56px;*/
+    margin-left: 18px;
+    margin-top: 20px;
     font-size: 16pt;
     font-weight: 300;
 }
@@ -145,6 +147,20 @@ h2 {
 
 #login-form .logform:first-child {
     margin-right:8%;
+}
+
+#login-form .logform button {
+    color: #fff;
+    background-color: #bd081c;
+    border-color: #b60015;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: none;
+    font-weight: 400;
+}
+
+#login-form .logform button:hover {
+    background-color: #cd182c;
+    border-color: #b60015;
 }
 
 .shadow {

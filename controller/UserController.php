@@ -14,8 +14,8 @@ class UserController {
         $this->service = new UserService();
     }
 
-    public function addNewUser($email, $name, $password) {
-        return $this->service->addUser($email, $name, $password );
+    public function addNewUser($email, $name, $password, $fbid) {
+        return $this->service->addUser($email, $name, $password, $fbid );
     }
 
     public function checkInfo($email, $password) {
@@ -29,6 +29,17 @@ class UserController {
     public function getName() {
         $result = $this->service->getUserData();
         return $result[0]['name'];
+    }
+
+    public function userExistsByFBID($fbid) {
+        return $this->service->checkFBID($fbid);
+    }
+
+    public function loginFB($fbid) {
+        if ($this->service->setFBses($fbid)) {
+            //header('Location: index.php');
+            //exit();
+        }
     }
 
 }

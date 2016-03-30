@@ -10,11 +10,11 @@
 <?php
     if($this->usrsrv->isLoggedIn()) {
         $_SESSION['form_submitted'] = true;
-        echo '<div id="profilepic"><img src="images/user-512.png" alt="Profile Pic" /></div>';
+        //echo '<div id="profilepic"><img src="images/user-512.png" alt="Profile Pic" /></div>';
         echo '<div id="profilename">'.$this->usrsrv->getName().'</div>';
         echo '<div class="clear"><br /></div>';
         echo '<div class="menuitem fastTrans">Edit Profile</div>';
-        echo '<a href="logout.php"><div class="menuitem fastTrans">Log Out</div></a>';
+        echo '<a href="logout.php" onclick="FB.logout(function(response) {});"><div class="menuitem fastTrans">Log Out</div></a>';
     }
 ?>
 <!-- Profile Info -->

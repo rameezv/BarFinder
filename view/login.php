@@ -1,10 +1,19 @@
 <?php
 
+    if(isset($_POST['fbid'])) {
+        if ($this->usrsrv->userExistsByFBID($_POST['fbid'])) {
+            $this->usrsrv->loginFB($_POST['fbid']);
+        } else {
+            echo '<script type="text/javascript">regFB();</script>';
+        }
+    }
+
     if(isset($_POST['btn-signup'])) {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $upass = md5($_POST['pass']);
-        if ($this->usrsrv->addNewUser($email, $name, $upass)) {
+        $fbid = $_POST['fbid'];
+        if ($this->usrsrv->addNewUser($email, $name, $upass, $fbid)) {
             header('Location: index.php');
             exit();
         } else {
@@ -23,23 +32,25 @@
         }
     }
 ?>
+
 <div id="login-form">
 
 <div class="logform">
     <h2>Sign Up</h2>
-    <form method="post" action="index.php">
+    <form method="post" action="index.php" id="signupform">
     <table align="center" width="100%" border="0">
     <tr>
-    <td><input type="text" name="name" placeholder="Your Name" required /></td>
+    <td><input type="text" name="name" placeholder="Your Name" id="signup-name" required /></td>
     </tr>
     <tr>
-    <td><input type="email" name="email" placeholder="Your Email" required /></td>
+    <td><input type="email" name="email" placeholder="Your Email" id="signup-email" required /></td>
     </tr>
     <tr>
-    <td><input type="password" name="pass" placeholder="Your Password" required /></td>
+    <td><input type="password" name="pass" placeholder="Your Password" id="signup-pwd" required /></td>
+    <input type="hidden" name="fbid" id="signup-fbid" />
     </tr>
     <tr>
-    <td><button type="submit" name="btn-signup">Sign Me Up</button></td>
+    <td><button type="submit" name="btn-signup">Sign Up</button></td>
     </tr>
     </table>
     </form>
@@ -56,10 +67,14 @@
     <td><input type="password" name="pass" placeholder="Your Password" required /></td>
     </tr>
     <tr>
-    <td><button type="submit" name="btn-login">Sign In</button></td>
+    <td><button type="submit" name="btn-login">Log In</button></td>
     </tr>
     </table>
     </form>
 </div>
 
 </div>
+
+
+
+<div class="fb-login-button" scope="email,public_profile" style="margin-left:5%;" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="false" onlogin="checkLoginState();"></div>
