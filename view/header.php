@@ -11,6 +11,7 @@ $(document).bind("mobileinit", function () {
 });
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+<script src="js/bootstrap.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="css/style.css" rel="stylesheet" type="text/css"/>
 <meta name="viewport" content="initial-scale=1.0">

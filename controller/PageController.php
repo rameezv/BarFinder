@@ -21,12 +21,12 @@ class PageController {
         include 'view/header.php';
         if($this->usrsrv->isLoggedIn()) {
             include 'view/map.php';
+            include 'view/info.php';
         } else {
             include 'view/slider.php';
             include 'view/login.php';
         }
         include 'view/menu.php';
-        include 'view/info.php';
         include 'view/footer.php';
     }
 
