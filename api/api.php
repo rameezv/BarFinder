@@ -9,7 +9,7 @@ $app = new Slim();
 class ResourceNotFoundException extends Exception{}
 
 //R::setup('mysql:host=localhost; dbname=testDB','root','Patelrocks');
-R::setup('mysql:host=localhost:2016; dbname=bmuusers','350user','350password');
+R::setup('mysql:host=localhost; dbname=bmuusers','350user','350password');
 R::freeze(true);
 
 $app->get('/clubs', 'getClubs');    // get all clubs

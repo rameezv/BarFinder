@@ -5,7 +5,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALaBJ4XLzppINnC43hz8jSR3fkWxlaxgo&callback=load" async defer></script>
 
 <?php
-    $db = new mysqli("localhost:2016", "350user", "350password", "bmuusers");
+    $db = new mysqli("localhost", "350user", "350password", "bmuusers");
     if (mysqli_connect_errno()) {
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();

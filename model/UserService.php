@@ -4,7 +4,7 @@
  * Talks to the DB and performs operations
  */
 class UserService {
-    private $servername = "localhost:2016";
+    private $servername = "localhost";
     private $username = "350user";
     private $password = "350password";
     private $conn = NULL;
