@@ -22,6 +22,7 @@ class PageController {
         if($this->usrsrv->isLoggedIn()) {
             include 'view/map.php';
         } else {
+            include 'view/slider.php';
             include 'view/login.php';
         }
         include 'view/menu.php';
