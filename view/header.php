@@ -20,7 +20,7 @@ $(document).bind("mobileinit", function () {
 <body>
 
 <div id="header" class="shadow">
-<a href="index.php"><h1>BarMeUp</h1></a>
+<a href="index.php"><h1><span class="glyphicon glyphicon-glass" style="font-size:28pt" aria-hidden="true"></span>&nbsp;BarMeUp</h1></a>
 <div id="menuIcon" onclick="toggleMenu();" class="fastTrans"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
 <div class="clear"></div>
 </div>
