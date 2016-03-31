@@ -170,7 +170,7 @@ h2 {
     margin-right:8%;
 }
 
-#login-form .logform button, #profile-form .proform button {
+#login-form .logform button, #profile-form .proform button, #information button {
     color: #fff;
     background-color: #bd081c;
     border-color: #b60015;

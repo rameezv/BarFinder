@@ -30,11 +30,8 @@ if(isset($_POST["submit"])){
 
 <div class="container">
     <!-- Feedback Form Starts Here -->
-    <div id="information">
-        <!-- Heading Of The Form -->
-        <div class="page-header">
-            <h3>Support Form</h3>
-        </div>
+    <div id="information" class="shadow">
+    <h2 style="margin-top:0;">Support Form</h2>
         <!-- Feedback Form -->
         <form action="#" id="form" method="post" name="form">
             <input name="vname" placeholder="Your Name" type="text" value="">
@@ -45,7 +42,11 @@ if(isset($_POST["submit"])){
             <button id="send" type="submit" name="submit">Send</button>
         </form>
 
-        <h3><?php echo $msg ?></h3>
+        <?php
+            if (isset($msg)) {
+                echo '<h3>'.$msg.'</h3>';
+            }
+        ?>
 
     </div>
     <!-- Feedback Form Ends Here -->
