@@ -41,7 +41,7 @@ if(isset($_POST["submit"])){
             <input name="vemail" placeholder="Your Email" type="text" value="">
             <input name="sub" placeholder="Subject" type="text" value="">
             <label>Your Suggestion/Feedback or Problem</label>
-            <textarea rows="4" cols="50" name="msg" placeholder="Type your text here..."></textarea>
+            <textarea rows="4" cols="50" name="msg" placeholder="Type your message here."></textarea>
             <button id="send" type="submit" name="submit">Send</button>
         </form>
 
