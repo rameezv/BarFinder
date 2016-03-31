@@ -1,7 +1,8 @@
 <div id="information" class="shadow">
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec varius ex. Cras eu est pharetra, scelerisque diam quis, cursus purus. Etiam tristique justo sit amet gravida vulputate. Aliquam ultrices porttitor libero, ut feugiat purus consequat at. Etiam aliquet ornare ante, vel pharetra elit viverra non. Aenean finibus dui eros, scelerisque porttitor felis semper ac. Maecenas at tristique lacus. Pellentesque aliquam nulla sodales nisl venenatis tempus.
+Welcome to BarMeUp! BarMeUp serves to show you which bars and clubs are nearby so you don't have to argue with your friends about where to go out until it's already too late to
+go out and then the whole NIGHT IS RUINED MELISSA! IT WAS MY BIRTHDAY!
 <br /><br />
-Sed a erat eget mauris fringilla viverra. Vivamus purus tellus, cursus volutpat odio hendrerit, iaculis eleifend nibh. Praesent ac ex eget felis suscipit rhoncus. Curabitur mi turpis, faucibus eu risus eu, congue ullamcorper elit. Nunc id urna ligula. Vivamus sollicitudin lorem aliquet porta condimentum. Praesent dolor dolor, mattis ut lacus id, mattis aliquam justo. Sed sit amet tincidunt risus. Donec sit amet nibh non erat sollicitudin viverra ac non sem. Aliquam faucibus diam ut nunc finibus, vitae tristique purus bibendum. Nunc non nisi gravida, viverra elit at, laoreet purus. Morbi hendrerit magna in dolor pellentesque scelerisque. Nulla facilisi. Sed sit amet sollicitudin quam. Etiam rhoncus gravida nibh, vel maximus ligula hendrerit at.
-
+Sorry about that. BarMeUp also has a handy API for developers that will give them access to the database in JSON format. Developers can simply call /api/clubs to grab a list of all the clubs, bars, and pubs in our database.
+You can also request a list of different types of buildings, for example, /api/clubs/Bars for bars. You can also add a club using POST with /api/club. If you have any questions, please contact us through our <a href="support.php">support page</a>.
 </div>

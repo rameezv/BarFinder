@@ -5,26 +5,26 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALaBJ4XLzppINnC43hz8jSR3fkWxlaxgo&callback=load" async defer></script>
 
 <?php
+    $db = new mysqli("localhost:2016", "350user", "350password", "bmuusers");
+    if (mysqli_connect_errno()) {
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+    }
 
-$db = new mysqli("localhost:2016", "350user", "350password", "bmuusers");
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
+    $res = $db->query("select * from clubs");
 
-$res = $db->query("select * from clubs");
+    $mrk_cnt = 0;
 
-$mrk_cnt = 0;
-
-while ($obj = $res->fetch_object())  // get all rows (markers)
-{
-    $lat[$mrk_cnt] = $obj->latitude;  // save the lattitude
-    $lng[$mrk_cnt] = $obj->longitude;  // save the longitude
-    $name[$mrk_cnt] = $obj->name;
-    $phone[$mrk_cnt] = $obj->phone;  // save the info-window
-    $mrk_cnt++;                      // increment the marker counter
-}
-$res->close();
+    while ($obj = $res->fetch_object())  // get all rows (markers)
+    {
+        $lat[$mrk_cnt] = $obj->latitude;  // save the lattitude
+        $lng[$mrk_cnt] = $obj->longitude;  // save the longitude
+        $name[$mrk_cnt] = $obj->name;
+        $phone[$mrk_cnt] = $obj->phone;  // save the info-window
+        $addr[$mrk_cnt] = $obj->address;
+        $mrk_cnt++;                      // increment the marker counter
+    }
+    $res->close();
 ?>
 
 <script type='text/javascript'>
@@ -75,26 +75,28 @@ $res->close();
                 'Error: Your browser doesn\'t support geolocation.');
         }
         <?php
-        for ($lcnt = 0; $lcnt < $mrk_cnt; $lcnt++)
-        {
-
-            echo "var point$lcnt = new google.maps.LatLng($lat[$lcnt], $lng[$lcnt]);\n";
-            echo "var mrktx$lcnt = \"$name[$lcnt]\";\n ";
-            echo "var infowindow$lcnt = new google.maps.InfoWindow({
-   			content: mrktx$lcnt
-			});";
-            echo "var marker$lcnt = new google.maps.Marker({
-        position: point$lcnt,
-        map: map,
-        icon: icon,
-        shadow: shadow
-        });\n";
-            echo "google.maps.event.addListener(marker$lcnt,
-         'click', function() {
-   		     infowindow$lcnt.open(map,marker$lcnt);
-
-          });\n";
-        }
+            echo 'var last=null;';
+            for ($lcnt = 0; $lcnt < $mrk_cnt; $lcnt++) {
+                echo "var point$lcnt = new google.maps.LatLng($lat[$lcnt], $lng[$lcnt]);\n";
+                echo "var mrktx$lcnt = \"$name[$lcnt]<br />Address: $addr[$lcnt]<br />Phone: $phone[$lcnt]\";";
+                echo "var infowindow$lcnt = new google.maps.InfoWindow({
+   			              content: mrktx$lcnt
+			         });";
+                echo "var marker$lcnt = new google.maps.Marker({
+                    position: point$lcnt,
+                    map: map,
+                    icon: icon,
+                    shadow: shadow
+                    });\n";
+                echo "google.maps.event.addListener(marker$lcnt,
+                    'click', function() {
+                       if (last) {
+                        last.close();
+                       }
+   		               infowindow$lcnt.open(map,marker$lcnt);
+                       last = infowindow$lcnt;
+                    });\n";
+                }
         ?>
     }
 </script>
