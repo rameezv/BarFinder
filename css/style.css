@@ -110,6 +110,11 @@ h2 {
     padding: 0;
 }
 
+#navmenu a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
 #navclose {
     font-size: 20pt;
     float: right;

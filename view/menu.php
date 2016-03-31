@@ -13,7 +13,7 @@
         //echo '<div id="profilepic"><img src="images/user-512.png" alt="Profile Pic" /></div>';
         echo '<div id="profilename">'.$this->usrsrv->getName().'</div>';
         echo '<div class="clear"><br /></div>';
-        echo '<div class="menuitem fastTrans">Edit Profile</div>';
+        echo '<a href="profile.php"><div class="menuitem fastTrans">Edit Profile</div></a>';
         echo '<a href="logout.php" onclick="FB.logout(function(response) {});"><div class="menuitem fastTrans">Log Out</div></a>';
     }
 ?>
@@ -21,7 +21,7 @@
 
 <!-- Persistent Menu Items -->
 
-<div class="menuitem fastTrans">Support</div>
+<a href="support.php"><div class="menuitem fastTrans">Support</div></a>
 
 <!-- Persistent Menu Items -->
 
