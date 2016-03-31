@@ -22,7 +22,7 @@ if(isset($_POST["submit"])){
             $message = wordwrap($message, 70);
 // Send Mail By PHP Mail Function
             if (mail("jtnptl89@gmail.com", $subject, $message, $headers)) {
-                $msg = "Your mail has been sent successfuly !";
+                $msg = "Your mail has been sent successfuly!";
             } else {
                 $smg = "Something went wrong!";
             }
