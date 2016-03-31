@@ -31,6 +31,19 @@ class UserController {
         return $result[0]['name'];
     }
 
+    public function getEmail() {
+        $result = $this->service->getUserData();
+        return $result[0]['id'];
+    }
+
+    public function updateUserName($name) {
+        return $this->service->updateUser($this->getEmail(), $name, NULL);
+    }
+
+    public function updateUserNameAndPW($name, $pw) {
+        return $this->service->updateUser($this->getEmail(), $name, $pw);
+    }
+
     public function userExistsByFBID($fbid) {
         return $this->service->checkFBID($fbid);
     }
@@ -41,7 +54,7 @@ class UserController {
             //exit();
         }
     }
-    
+
     public function getClubs(){
         return $this->service->getClubData();
     }

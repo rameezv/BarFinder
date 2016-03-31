@@ -46,7 +46,11 @@ h2 {
 #header h1 {
     text-shadow: 0 3px 0 #2b2b2b;
     float:left;
-    cursor: default;
+    cursor: pointer;
+}
+
+#header a {
+    color: #ffffff;
 }
 
 #footer {
@@ -139,6 +143,18 @@ h2 {
     font-size: 16pt;
 }
 
+#pralert {
+    width:90%;
+    background-color: #FFFACD;
+    color: #222222;
+    padding: 20px;
+    margin:20px 5%;
+    font-size: 16pt;
+    border: 1px solid #F0E68C;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
 #login-form {
     width: 100%;
     padding: 0 5%;
@@ -154,7 +170,7 @@ h2 {
     margin-right:8%;
 }
 
-#login-form .logform button {
+#login-form .logform button, #profile-form .proform button {
     color: #fff;
     background-color: #bd081c;
     border-color: #b60015;

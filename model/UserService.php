@@ -63,6 +63,24 @@ class UserService {
         }
     }
 
+    public function updateUser($id, $name, $pw) {
+        try {
+            $this->openDB();
+            if ($pw = NULL) {
+                $sql = "UPDATE users SET name='$name' WHERE id='$id';";
+            } else {
+                $sql = "UPDATE users SET name='$name',pw='$pw' WHERE id='$id';";
+            }
+            $this->conn->exec($sql);
+            $this->closeDB();
+            return true;
+        } catch (Exception $e) {
+            $this->closeDB();
+            throw $e;
+            return false;
+        }
+    }
+
     public function checkInfo($email, $password) {
         $this->openDB();
         $stmt = $this->conn->prepare("SELECT id, pw FROM users WHERE id='$email'");
@@ -110,7 +128,7 @@ class UserService {
         $result = $stmt->fetchAll();
         return (isset($result[0]['id']));
     }
-    
+
     public function getClubData(){
         $this->openDB();
         $stmt = $this->conn->prepare("SELECT * FROM clubs");

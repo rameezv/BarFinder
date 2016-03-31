@@ -40,7 +40,11 @@ class PageController {
     public function displayProfileEditor() {
         session_start();
         include 'view/header.php';
-        include 'view/profileeditor.php';
+        if($this->usrsrv->isLoggedIn()) {
+            include 'view/profileeditor.php';
+        } else {
+            include 'view/login.php';
+        }
         include 'view/menu.php';
         include 'view/footer.php';
     }
