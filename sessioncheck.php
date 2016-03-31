@@ -5,7 +5,7 @@ if( empty($_SESSION['user']) ) {
      print "No";
 }
 else {
-     print "Yes";
+     print "Yes," . $_SESSION['user'];
 }
 
 ?>

@@ -26,6 +26,17 @@
 
         echo '</div>';
     }
+
+    if (isset($_POST['del'])) {
+        if ($this->usrsrv->deleteUser()) {
+            $_SESSION['user'] = NULL;
+            session_destroy();
+            header("Location: logout.php");
+            exit();
+        } else {
+            echo '<div id="pralert">Unknown Error. If problem persists, find a nearby bar manually.</div>';
+        }
+    }
 ?>
 
 <div id="information" class="shadow">
@@ -54,6 +65,8 @@ Account: <b><?php echo $this->usrsrv->getEmail(); ?></b>
     </tr>
     </table>
     </form>
+
+<a href="#" onclick="deleteProfile();">Delete Profile</a>
 </div>
 
 </div>

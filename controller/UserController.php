@@ -44,6 +44,10 @@ class UserController {
         return $this->service->updateUser($this->getEmail(), $name, $pw);
     }
 
+    public function deleteUser() {
+        return $this->service->deleteUser($this->getEmail());
+    }
+
     public function userExistsByFBID($fbid) {
         return $this->service->checkFBID($fbid);
     }

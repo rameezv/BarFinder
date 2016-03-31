@@ -81,6 +81,20 @@ class UserService {
         }
     }
 
+    public function deleteUser($id) {
+        try {
+            $this->openDB();
+            $sql = "DELETE FROM users WHERE id='$id';";
+            $this->conn->exec($sql);
+            $this->closeDB();
+            return true;
+        } catch (Exception $e) {
+            $this->closeDB();
+            throw $e;
+            return false;
+        }
+    }
+
     public function checkInfo($email, $password) {
         $this->openDB();
         $stmt = $this->conn->prepare("SELECT id, pw FROM users WHERE id='$email'");

@@ -27,6 +27,18 @@ function hideMenu() {
     $("#menuIcon").css("margin-right", 0);
 }
 
+function deleteProfile() {
+  if (confirm('Are you sure you want to delete your account? This cannot be undone.')) {
+    FB.logout(function(response) {});
+    var form = $('<form action="profile.php" method="post">' +
+                '<input type="text" name="del" value="true" /></form>');
+    $('body').append(form);
+    form.submit();
+  } else {
+    return false;
+  }
+}
+
 /* FACEBOOK INTEGRATION */
 
 // This is called with the results from from FB.getLoginStatus().
