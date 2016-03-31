@@ -41,6 +41,10 @@ class UserController {
             //exit();
         }
     }
+    
+    public function getClubs(){
+        return $this->service->getClubData();
+    }
 
 }
 

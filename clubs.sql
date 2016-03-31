@@ -29,7 +29,7 @@ CREATE TABLE `clubs` (
   `address` varchar(100) NOT NULL,
   `latitude` varchar(100) NOT NULL,
   `longitude` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `clubs`

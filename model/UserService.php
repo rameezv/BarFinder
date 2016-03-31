@@ -110,6 +110,16 @@ class UserService {
         $result = $stmt->fetchAll();
         return (isset($result[0]['id']));
     }
+    
+    public function getClubData(){
+        $this->openDB();
+        $stmt = $this->conn->prepare("SELECT * FROM clubs");
+        $stmt->execure();
+        $this->closeDB();
+        $result = $stmt->fetchAll();
+        return $result;
+
+    }
 
 }
 
