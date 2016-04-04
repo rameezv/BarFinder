@@ -127,9 +127,7 @@
         //echo "alert('$ph');";
         //$this->usrsrv->addFav($email,$nm, $ad,$ph);
         if ($this->usrsrv->addFav($email,$nm, $ad,$ph)) {
-            header('Location: index.php');
             echo '<script>parent.window.location.reload();</script>';
-            exit();
         }
 
     }

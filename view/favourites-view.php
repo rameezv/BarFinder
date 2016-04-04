@@ -1,5 +1,6 @@
 
 <div id="information" class="shadow">
+<h2>Favourites</h2>
     <?php
     $res = $this->usrsrv->getUFav();
     $length = count($res);
@@ -20,8 +21,10 @@
                             <p><strong>Phone: </strong><?php echo $res[$itr]['phone'] ?></p>
                         </div>
                         <div class="panel-more1 pull-right">
+                            <form action="favourite.php" method="post">
                             <button class="btn btn-primary button" type="submit" name="remove-Fav" value="<?php echo $res[$itr]['name']; ?>">Remove Favorite
                             </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -30,5 +33,11 @@
         <?php
         $itr++;
     }
+
+    if (isset($_POST['remove-Fav'])) {
+        $this->usrsrv->delUFav($_POST['remove-Fav']);
+        echo '<script>parent.window.location.reload();</script>';
+    }
+
     ?>
 </div>  <!-- Information Div Ends -->
