@@ -6,6 +6,17 @@
 
 <?php
     //$db = new mysqli("localhost", "root", "root", "testDB");
+
+    function formatPhone($num) {
+        if(  preg_match( '/^(\d{3})(\d{3})(\d{4})$/', $num,  $matches ) )
+        {
+            $result = $matches[1] . '-' .$matches[2] . '-' . $matches[3];
+            return $result;
+        } else {
+            return $num;
+        }
+    }
+
     $db = new mysqli("localhost:2016", "350user", "350password", "bmuusers");
     if (mysqli_connect_errno()) {
         printf("Connect failed: %s\n", mysqli_connect_error());
@@ -29,6 +40,7 @@
 
 
     $res->close();
+
 ?>
 
 <script type='text/javascript'>
@@ -90,7 +102,7 @@
                                         \"<input type='hidden' name='fav-name' value='$name[$lcnt]'>\"+
                                         \"<p>Address: $addr[$lcnt]</p>\"+
                                         \"<input type='hidden' name='fav-addr' value='$addr[$lcnt]'>\"+
-                                        \"<p>Phone: $phone[$lcnt]</p>\"+
+                                        \"<p>Phone: ".formatPhone($phone[$lcnt])."</p>\"+
                                         \"<input type='hidden' name='fav-phone' value='$phone[$lcnt]'>\"+
                                         \"<button type='submit' name='fav-btn'>Add To Favourite</button>\"+
                                         \"</form>\"+

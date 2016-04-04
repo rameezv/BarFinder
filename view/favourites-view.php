@@ -2,6 +2,15 @@
 <div id="information" class="shadow">
 <h2>Favourites</h2>
     <?php
+    function formatPhone($num) {
+        if(  preg_match( '/^(\d{3})(\d{3})(\d{4})$/', $num,  $matches ) )
+        {
+            $result = $matches[1] . '-' .$matches[2] . '-' . $matches[3];
+            return $result;
+        } else {
+            return $num;
+        }
+    }
     $res = $this->usrsrv->getUFav();
     $length = count($res);
     $itr = 0;
@@ -18,7 +27,7 @@
                     <div class="panel-body">
                         <div class="panel-info">
                             <p><strong>Address: </strong><?php echo $res[$itr]['address'] ?></p>
-                            <p><strong>Phone: </strong><?php echo $res[$itr]['phone'] ?></p>
+                            <p><strong>Phone: </strong><?php echo formatPhone($res[$itr]['phone']); ?></p>
                         </div>
                         <div class="panel-more1 pull-right">
                             <form action="favourite.php" method="post">
@@ -40,4 +49,4 @@
     }
 
     ?>
-</div>  <!-- Information Div Ends -->
+</div>  <!-- Information Div Ends -->4
