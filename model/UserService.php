@@ -105,7 +105,7 @@ class UserService {
     public function updateUser($id, $name, $pw) {
         try {
             $this->openDB();
-            if ($pw = NULL) {
+            if ($pw == NULL) {
                 $sql = "UPDATE users SET name='$name' WHERE id='$id';";
             } else {
                 $sql = "UPDATE users SET name='$name',pw='$pw' WHERE id='$id';";

@@ -6,7 +6,7 @@
 
         echo '<div id="pralert">';
 
-        if (empty($upass)) {
+        if (empty($_POST['pass'])) {
             if ($this->usrsrv->updateUserName($name)) {
                 echo "Updated Profile!";
             } else {
@@ -14,7 +14,7 @@
             }
         } elseif ($upass == $upasscon && !empty($name)) {
             if ($this->usrsrv->updateUserNameAndPW($name, $upass)) {
-                echo "Updated Profile!";
+                echo "Updated Profile and Changed Password!";
             } else {
                 echo "Error: Please check your input! If problem persists, find a nearby bar manually.";
             }
