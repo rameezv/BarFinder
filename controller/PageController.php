@@ -50,6 +50,18 @@ class PageController {
         include 'view/footer.php';
     }
 
+    public function displayFavourite(){
+        session_start();
+        include 'view/header.php';
+        if($this->usrsrv->isLoggedIn()) {
+            include 'view/favourites-view.php';
+        } else {
+            include 'view/login.php';
+        }
+        include 'view/menu.php';
+        include 'view/footer.php';
+    }
+
     public function logout() {
         session_start();
         $_SESSION = array();

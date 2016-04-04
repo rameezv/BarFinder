@@ -8,7 +8,7 @@ $app = new Slim();
 // custom class just to throw an exception
 class ResourceNotFoundException extends Exception{}
 
-//R::setup('mysql:host=localhost; dbname=testDB','root','Patelrocks');
+//R::setup('mysql:host=localhost; dbname=testDB','root','root');
 R::setup('mysql:host=localhost; dbname=bmuusers','350user','350password');
 R::freeze(true);
 

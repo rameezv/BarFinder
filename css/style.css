@@ -147,6 +147,21 @@ h2 {
     margin-bottom: 100px;
 }
 
+#mapItem {
+    margin:20px 5%;
+    font-size: 16pt;
+}
+
+
+#mapInfo{
+    width: 90%;
+    background-color: #ffffff;
+    padding: 20px;
+    margin:20px 5%;
+    font-size: 16pt;
+    margin-bottom: 100px;
+}
+
 #pralert {
     width:90%;
     background-color: #FFFACD;
@@ -174,13 +189,25 @@ h2 {
     margin-right:8%;
 }
 
-#login-form .logform button, #profile-form .proform button, #information button {
+#login-form .logform button, #profile-form .proform button, #information button, #mapItem button {
     color: #fff;
     background-color: #bd081c;
     border-color: #b60015;
     font-family: 'Roboto', sans-serif;
     text-shadow: none;
     font-weight: 400;
+}
+
+#mapItem button {
+    border: 1px solid #b60015;
+    padding: 5px 10px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#mapItem button:hover {
+    background-color: #cd182c;
+    border-color: #b60015;
 }
 
 #login-form .logform button:hover {

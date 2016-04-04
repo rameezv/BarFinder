@@ -15,6 +15,7 @@
         $fbid = $_POST['fbid'];
         if ($this->usrsrv->addNewUser($email, $name, $upass, $fbid)) {
             header('Location: index.php');
+            //echo '<script>parent.window.location.reload();</script>';
             exit();
         } else {
             echo 'Signup Error.';
@@ -26,6 +27,7 @@
         $upass = $_POST['pass'];
         if ($this->usrsrv->checkInfo($email, $upass)) {
             header('Location: index.php');
+            echo '<script>parent.window.location.reload();</script>';
             exit();
         } else {
             echo 'Error.';

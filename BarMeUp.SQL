@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Mar 29, 2016 at 09:42 PM
+-- Generation Time: Apr 04, 2016 at 07:51 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -11,8 +11,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `testDB`
+-- Database: `bmuusers`
 --
+CREATE DATABASE IF NOT EXISTS `bmuusers` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bmuusers`;
 
 -- --------------------------------------------------------
 
@@ -20,7 +22,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `clubs`
 --
 
-CREATE TABLE `clubs` (
+DROP TABLE IF EXISTS `clubs`;
+CREATE TABLE IF NOT EXISTS `clubs` (
   `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `category` varchar(100) NOT NULL,
@@ -29,7 +32,7 @@ CREATE TABLE `clubs` (
   `address` varchar(100) NOT NULL,
   `latitude` varchar(100) NOT NULL,
   `longitude` varchar(100) NOT NULL
-) AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `clubs`
@@ -97,6 +100,33 @@ INSERT INTO `clubs` (`id`, `name`, `category`, `phone`, `city`, `address`, `lati
 (59, 'Centro Office Lounge', 'Lounges', '3062412414', 'Saskatoon', '111 23 Street E', '52.130455', '-106.6644669'),
 (60, 'StaQatto Piano Bar', 'Bars', '3062448877', 'Saskatoon', '416 21st Street E', '52.1265737', '-106.6602384');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favourite`
+--
+
+DROP TABLE IF EXISTS `favourite`;
+CREATE TABLE IF NOT EXISTS `favourite` (
+  `email` varchar(100) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `phone` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `pw` varchar(100) NOT NULL,
+  `fbid` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -105,6 +135,20 @@ INSERT INTO `clubs` (`id`, `name`, `category`, `phone`, `city`, `address`, `lati
 -- Indexes for table `clubs`
 --
 ALTER TABLE `clubs`
+  ADD PRIMARY KEY (`id`,`name`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indexes for table `favourite`
+--
+ALTER TABLE `favourite`
+  ADD PRIMARY KEY (`email`,`name`),
+  ADD KEY `foreignkey2` (`name`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -116,3 +160,13 @@ ALTER TABLE `clubs`
 --
 ALTER TABLE `clubs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `favourite`
+--
+ALTER TABLE `favourite`
+  ADD CONSTRAINT `foreignKey1` FOREIGN KEY (`email`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `foreignkey2` FOREIGN KEY (`name`) REFERENCES `clubs` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;

@@ -4,9 +4,9 @@
  * Talks to the DB and performs operations
  */
 class UserService {
-    private $servername = "localhost";
-    private $username = "350user";
-    private $password = "350password";
+    private $servername = "localhost:2016";
+    private $username = "350user";//"root";
+    private $password = "350password";//"root";
     private $conn = NULL;
 
     public function __construct() {
@@ -29,7 +29,7 @@ class UserService {
             USE bmuusers;";
             // use exec() because no results are returned
             $this->conn->exec($sql);
-            $eql = "CREATE TABLE IF NOT EXISTS users (
+            $sql = "CREATE TABLE IF NOT EXISTS users (
                 `id` VARCHAR(45) NOT NULL,
                 `name` VARCHAR(45) NOT NULL,
                 `pw` VARCHAR(45) NOT NULL,
@@ -63,6 +63,45 @@ class UserService {
         }
     }
 
+    public function addUserFav($email, $name, $address, $phone){
+        try {
+            $this->openDB();
+            $sql = "INSERT INTO favourite(email, name, address, phone) VALUES('$email', '$name', '$address', $phone)";
+            $this->conn->exec($sql);
+            $this->closeDB();
+            return true;
+        }catch (Exception $e){
+            $this->closeDB();
+            throw $e;
+            return false;
+        }
+    }
+
+    public function getUserFav(){
+        $this->openDB();
+        $user = $_SESSION['user'];
+        //echo $user;
+        $stmt = $this->conn->prepare("SELECT * FROM favourite WHERE email='$user'");
+        $stmt->execute();
+        $this->closeDB();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function deleteUserFav($name){
+        try {
+            $this->openDB();
+            $user = $_SESSION['user'];
+            $sql = "DELETE FROM favourite WHERE email='$user' AND name='$name';";
+            $this->conn->exec($sql);
+            $this->closeDB();
+            return true;
+        } catch (Exception $e) {
+            $this->closeDB();
+            throw $e;
+            return false;
+        }
+    }
     public function updateUser($id, $name, $pw) {
         try {
             $this->openDB();
@@ -94,6 +133,8 @@ class UserService {
             return false;
         }
     }
+
+
 
     public function checkInfo($email, $password) {
         $this->openDB();
@@ -152,6 +193,8 @@ class UserService {
         return $result;
 
     }
+
+
 
 }
 

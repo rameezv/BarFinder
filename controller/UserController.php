@@ -18,6 +18,18 @@ class UserController {
         return $this->service->addUser($email, $name, $password, $fbid );
     }
 
+    public function addFav($email, $name, $address, $phone){
+        return $this->service->addUserFav($email, $name, $address, $phone);
+    }
+
+    public function getUFav(){
+        return $this->service->getUserFav();
+    }
+
+    public function delUFav($name){
+        return $this->service->deleteUserFav($name);
+    }
+
     public function checkInfo($email, $password) {
         return $this->service->checkInfo($email, $password);
     }
