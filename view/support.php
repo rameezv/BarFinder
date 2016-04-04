@@ -21,7 +21,7 @@ if(isset($_POST["submit"])){
 // Message lines should not exceed 70 characters (PHP rule), so wrap it
             $message = wordwrap($message, 70);
 // Send Mail By PHP Mail Function
-            if (mail("jtnptl89@gmail.com", $subject, $message, $headers)) {
+            if (mail("info@barme.club", $subject, $message, $headers)) {
                 $msg = "Your mail has been sent successfuly!";
             } else {
                 $smg = "Something went wrong!";
