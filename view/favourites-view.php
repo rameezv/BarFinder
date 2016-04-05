@@ -47,6 +47,5 @@
         $this->usrsrv->delUFav($_POST['remove-Fav']);
         echo '<script>parent.window.location.reload();</script>';
     }
-
     ?>
-</div>  <!-- Information Div Ends -->4
+</div>  <!-- Information Div Ends -->

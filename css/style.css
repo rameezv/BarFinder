@@ -41,7 +41,7 @@ h2 {
     padding: 0 20px;
     height: 100px;
     z-index: 10;
-    min-width: 740px;
+    min-width: 100%;/*740px;*/
 }
 
 #header h1 {

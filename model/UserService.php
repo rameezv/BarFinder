@@ -4,9 +4,16 @@
  * Talks to the DB and performs operations
  */
 class UserService {
+
     private $servername = "localhost:2016";
-    private $username = "350user";//"root";
-    private $password = "350password";//"root";
+    private $username = "350user";
+    private $password = "350password";
+    private $dbName = "bmuusers";
+
+//    private $servername = "localhost";
+//    private $username = "root";
+//    private $password = "root";
+//    private $dbName = "testDB";
     private $conn = NULL;
 
     public function __construct() {
@@ -22,7 +29,7 @@ class UserService {
      */
     public function openDB() {
         try {
-            $this->conn = new PDO("mysql:host=$this->servername;dbname=bmuusers", $this->username, $this->password);
+            $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbName", $this->username, $this->password);
             // set the PDO error mode to exception
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "CREATE DATABASE IF NOT EXISTS bmuusers;
@@ -66,10 +73,19 @@ class UserService {
     public function addUserFav($email, $name, $address, $phone){
         try {
             $this->openDB();
-            $sql = "INSERT INTO favourite(email, name, address, phone) VALUES('$email', '$name', '$address', $phone)";
-            $this->conn->exec($sql);
-            $this->closeDB();
-            return true;
+            $stmt = $this->conn->prepare("SELECT * FROM favourite WHERE email='$email' AND name='$name'");
+            $stmt->execute();
+            if($stmt->rowCount() < 1){
+                $sql = "INSERT INTO favourite(email, name, address, phone) VALUES('$email', '$name', '$address', '$phone')";
+                $this->conn->exec($sql);
+                $this->closeDB();
+                return true;
+            }
+
+//            $sql = "INSERT INTO favourite(email, name, address, phone) VALUES('$email', '$name', '$address', '$phone')";
+//            $this->conn->exec($sql);
+//            $this->closeDB();
+//            return true;
         }catch (Exception $e){
             $this->closeDB();
             throw $e;
@@ -187,7 +203,7 @@ class UserService {
     public function getClubData(){
         $this->openDB();
         $stmt = $this->conn->prepare("SELECT * FROM clubs");
-        $stmt->execure();
+        $stmt->execute();
         $this->closeDB();
         $result = $stmt->fetchAll();
         return $result;

@@ -5,7 +5,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALaBJ4XLzppINnC43hz8jSR3fkWxlaxgo&callback=load" async defer></script>
 
 <?php
-    //$db = new mysqli("localhost", "root", "root", "testDB");
+    $res = $this->usrsrv->getClubs();
+    $resC = count($res);
 
     function formatPhone($num) {
         if(  preg_match( '/^(\d{3})(\d{3})(\d{4})$/', $num,  $matches ) )
@@ -17,30 +18,16 @@
         }
     }
 
-    $db = new mysqli("localhost:2016", "350user", "350password", "bmuusers");
-    if (mysqli_connect_errno()) {
-        printf("Connect failed: %s\n", mysqli_connect_error());
-        exit();
-    }
-
-    $res = $db->query("select * from clubs");
-
     $mrk_cnt = 0;
+    while($mrk_cnt < $resC){
+        $lat[$mrk_cnt] = $res[$mrk_cnt]['latitude'];
+        $lng[$mrk_cnt] = $res[$mrk_cnt]['longitude'];
+        $name[$mrk_cnt] = $res[$mrk_cnt]['name'];;
+        $phone[$mrk_cnt] = $res[$mrk_cnt]['phone'];
+        $addr[$mrk_cnt] = $res[$mrk_cnt]['address'];
+        $mrk_cnt++;     // increment the marker counter
 
-    while ($obj = $res->fetch_object())  // get all rows (markers)
-    {
-        $lat[$mrk_cnt] = $obj->latitude;  // save the lattitude
-        $lng[$mrk_cnt] = $obj->longitude;  // save the longitude
-        $name[$mrk_cnt] = $obj->name;
-        $phone[$mrk_cnt] = $obj->phone;  // save the info-window
-        $addr[$mrk_cnt] = $obj->address;
-        $mrk_cnt++;                      // increment the marker counter
     }
-
-
-
-    $res->close();
-
 ?>
 
 <script type='text/javascript'>
@@ -136,11 +123,11 @@
         $nm = $_POST['fav-name'];
         $ad = $_POST['fav-addr'];
         $ph = $_POST['fav-phone'];
-        //echo "alert('$ph');";
-        //$this->usrsrv->addFav($email,$nm, $ad,$ph);
+
         if ($this->usrsrv->addFav($email,$nm, $ad,$ph)) {
             echo '<script>parent.window.location.reload();</script>';
         }
 
     }
 ?>
+
