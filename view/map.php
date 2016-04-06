@@ -82,11 +82,12 @@
             echo 'var last=null;';
             for ($lcnt = 0; $lcnt < $mrk_cnt; $lcnt++) {
 
+
                 echo "var point$lcnt = new google.maps.LatLng($lat[$lcnt], $lng[$lcnt]);\n";
                 echo "var mrktx$lcnt = \"<div id='mapItem'>\"+
                                         \"<form method='post' action='index.php'>\"+
                                         \"<h3 id='fav-name'>$name[$lcnt]</h3>\"+
-                                        \"<input type='hidden' name='fav-name' value='$name[$lcnt]'>\"+
+                                        \"<input type='hidden' name='fav-name' value='".htmlspecialchars($name[$lcnt], ENT_QUOTES)."'>\"+
                                         \"<p>Address: $addr[$lcnt]</p>\"+
                                         \"<input type='hidden' name='fav-addr' value='$addr[$lcnt]'>\"+
                                         \"<p>Phone: ".formatPhone($phone[$lcnt])."</p>\"+
