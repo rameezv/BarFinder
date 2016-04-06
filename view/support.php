@@ -2,7 +2,7 @@
 if(isset($_POST["submit"])){
 // Checking For Blank Fields..
     if($_POST["vname"]==""||$_POST["vemail"]==""||$_POST["sub"]==""||$_POST["msg"]==""){
-        echo "Fill All Fields..";
+        echo "<div id='pralert'>Please Fill Out All Fields</div>";
     }else{
 // Check if the "Sender's Email" input field is filled out
         $email=$_POST['vemail'];
@@ -11,7 +11,7 @@ if(isset($_POST["submit"])){
 // Validate E-mail Address
         $email= filter_var($email, FILTER_VALIDATE_EMAIL);
         if (!$email){
-            echo "Invalid Sender's Email";
+            echo "<div id='pralert'>Invalid Sender's Email</div>";
         }
         else{
             $subject = $_POST['sub'];
@@ -22,9 +22,9 @@ if(isset($_POST["submit"])){
             $message = wordwrap($message, 70);
 // Send Mail By PHP Mail Function
             if (mail("info@barme.club", $subject, $message, $headers)) {
-                $msg = "Your mail has been sent successfuly!";
+                $msg = "<div id='pralert'>Your mail has been sent successfuly!</div>";
             } else {
-                $smg = "Something went wrong!";
+                $smg = "<div id='pralert'>Something went wrong!</div>";
             }
         }
     }

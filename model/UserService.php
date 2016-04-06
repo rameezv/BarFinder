@@ -73,6 +73,7 @@ class UserService {
     }
 
     public function addUserFav($email, $name, $address, $phone){
+        $name = addslashes($name);
         try {
             $this->openDB();
             $stmt = $this->conn->prepare("SELECT * FROM favourite WHERE email='$email' AND name='$name'");
@@ -107,6 +108,7 @@ class UserService {
     }
 
     public function deleteUserFav($name){
+        $name = addslashes($name);
         try {
             $this->openDB();
             $user = $_SESSION['user'];

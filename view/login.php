@@ -33,7 +33,7 @@
         if ($this->usrsrv->checkInfo($email, md5($upass))) {
             echo '<script>parent.window.location.reload();</script>';
         } else {
-            echo 'Error.';
+            echo '<div id="pralert">Error logging in, please check your info.</div>';
         }
     }
 ?>
