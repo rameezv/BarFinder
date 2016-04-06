@@ -14,9 +14,14 @@
         $upass = md5($_POST['pass']);
         $fbid = $_POST['fbid'];
         if ($this->usrsrv->addNewUser($email, $name, $upass, $fbid)) {
-            header('Location: index.php');
-            //echo '<script>parent.window.location.reload();</script>';
-            exit();
+            if($this->usrsrv->checkInfo($email, $upass)) {
+                session_start();
+                $_SESSION['user'] = $email;
+                echo '<script>parent.window.location.reload();</script>';
+            } else {
+                echo 'Error Logging In';
+            }
+
         } else {
             echo 'Signup Error.';
         }
@@ -25,10 +30,8 @@
     if(isset($_POST['btn-login'])) {
         $email = $_POST['email'];
         $upass = $_POST['pass'];
-        if ($this->usrsrv->checkInfo($email, $upass)) {
-            header('Location: index.php');
+        if ($this->usrsrv->checkInfo($email, md5($upass))) {
             echo '<script>parent.window.location.reload();</script>';
-            exit();
         } else {
             echo 'Error.';
         }

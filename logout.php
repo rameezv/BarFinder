@@ -1,7 +1,7 @@
 <?php
     session_start();
-    $_SESSION = Array();
     session_destroy();
+    $_SESSION = Array();
     header("Location: index.php");
     exit();
 ?>

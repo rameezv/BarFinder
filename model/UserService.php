@@ -62,6 +62,8 @@ class UserService {
             $sql = "INSERT INTO users (id, name, pw, fbid) VALUES ('$email', '$name', '$password', '$fbid')";
             $this->conn->exec($sql);
             $this->closeDB();
+            $_SESSION = Array();
+            session_destroy();
             return true;
         } catch (Exception $e) {
             $this->closeDB();
@@ -159,7 +161,7 @@ class UserService {
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $this->closeDB();
         $result = $stmt->fetchAll();
-        if ($result[0]['pw'] == md5($password)) {
+        if ($result[0]['pw'] == $password) {
             $_SESSION['user'] = $result[0]['id'];
             return true;
         } else {

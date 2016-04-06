@@ -35,7 +35,7 @@ class UserController {
     }
 
     public function isLoggedIn() {
-        return isset($_SESSION['user'])!="";
+        return (isset($_SESSION['user']) && ($_SESSION['user']!=""));
     }
 
     public function getName() {
