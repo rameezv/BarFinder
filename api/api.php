@@ -59,7 +59,7 @@ function addClub(){
         $cb = R::Dispense('clubs');
 
         $cb->name = (string)$input->name;
-        $cb->category = "Notebooks";
+        $cb->category = (string)$input->category;
 
         $cb->phone = (string)$input->phone;
         $cb->city = (string)$input->city;
